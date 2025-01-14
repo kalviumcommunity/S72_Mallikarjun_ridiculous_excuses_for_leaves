@@ -1,5 +1,5 @@
 ### Project Title:
-**"Ridiculous Leave Excuses Tracker"**
+**"Ridiculous Leave Excuses Tracker"** 
 
 ### Project Overview:
 The "Ridiculous Leave Excuses Tracker" is a humorous and interactive web application that allows users to share and explore the most outlandish and absurd excuses people use to take leaves from work or school. The purpose of this project is to create a fun and engaging platform where users can contribute their own ridiculous leave excuses and browse through a collection submitted by others. The goal is to build a community-driven repository of hilarious leave excuses while demonstrating key concepts learned throughout the course.
