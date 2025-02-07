@@ -1,11 +1,27 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+const { MongoClient } = require('mongodb');
+require('dotenv').config();
 
-app.get('/ping', (req, res) => {
-    res.send('ping successful');
+const uri = process.env.MONGO_URI;
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+async function connectToDatabase() {
+  try {
+    await client.connect();
+    console.log('Connected to MongoDB');
+  } catch (err) {
+    console.error('Error connecting to MongoDB:', err);
+  }
+}
+
+
+app.get('/', async (req, res) => {
+    try {
+        const dbStatus = client.isConnected() ? 'Connected' : 'Not Connected';
+        res.send(`Database connection status: ${dbStatus}`);
+    } catch (err) {
+        res.status(500).send('Error checking database connection status');
+    }
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
-});
+
+connectToDatabase();
