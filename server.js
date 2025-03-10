@@ -1,27 +1,45 @@
-const { MongoClient } = require('mongodb');
-require('dotenv').config();
+// eslint-disable-next-line no-undef
+import express from 'express';
+import bodyParser from 'body-parser';
+import routes from './routes.js';
 
-const uri = process.env.MONGO_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const app = express();
+app.use(bodyParser.json());
+app.use(routes);
 
-async function connectToDatabase() {
-  try {
-    await client.connect();
-    console.log('Connected to MongoDB');
-  } catch (err) {
-    console.error('Error connecting to MongoDB:', err);
-  }
-}
-
-
-app.get('/', async (req, res) => {
-    try {
-        const dbStatus = client.isConnected() ? 'Connected' : 'Not Connected';
-        res.send(`Database connection status: ${dbStatus}`);
-    } catch (err) {
-        res.status(500).send('Error checking database connection status');
-    }
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 
-connectToDatabase();
+// AddExcuseForm.js
+import React, { useState } from 'react';
+
+const AddExcuseForm = ({ onAddExcuse }) => {
+    const [excuse, setExcuse] = useState('');
+    const [reason, setReason] = useState('');
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        onAddExcuse({ excuse, reason });
+        setExcuse('');
+        setReason('');
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <label>
+                Excuse:
+                <input type="text" value={excuse} onChange={(e) => setExcuse(e.target.value)} />
+            </label>
+            <label>
+                Reason:
+                <input type="text" value={reason} onChange={(e) => setReason(e.target.value)} />
+            </label>
+            <button type="submit">Add Excuse</button>
+        </form>
+    );
+};
+
+export default AddExcuseForm;
