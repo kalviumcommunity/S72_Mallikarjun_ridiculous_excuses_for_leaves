@@ -1,17 +1,23 @@
-import React from 'react';
-import ExcuseComponent from './ExcuseComponent';
+// src/App.js
 
-const dummyExcuse = {
-  title: 'Unicorn Sighting',
-  reason: 'I need to take the day off to search for the magical unicorn I saw in my backyard.'
-};
+import React from "react";
+import ExcuseCard from "./components/ExcuseCard";
 
 const App = () => {
-  return (
-    <div>
-      <ExcuseComponent excuse={dummyExcuse} />
-    </div>
-  );
+    const sampleExcuses = [
+        "My pet goldfish is getting married.",
+        "I accidentally traveled to another dimension.",
+        "Aliens abducted me, but they’ll bring me back tomorrow."
+    ];
+
+    return (
+        <div style={{ textAlign: "center", fontFamily: "Arial, sans-serif" }}>
+            <h1>Ridiculous Excuses for Leaves</h1>
+            {sampleExcuses.map((excuse, index) => (
+                <ExcuseCard key={index} excuse={excuse} />
+            ))}
+        </div>
+    );
 };
 
 export default App;
