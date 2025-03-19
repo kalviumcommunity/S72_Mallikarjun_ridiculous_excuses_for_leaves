@@ -1,6 +1,8 @@
 // ExcusesPage.js
 import React, { useState, useEffect } from 'react';
 import AddExcuseForm from './AddExcuseForm';
+import ExcuseList from './ExcuseList'; // Importing the new ExcuseList component
+
 
 const ExcusesPage = () => {
     const [excuses, setExcuses] = useState([]);
@@ -20,11 +22,8 @@ const ExcusesPage = () => {
         <div>
             <h1>Ridiculous Excuses for Leaves</h1>
             <AddExcuseForm onAddExcuse={handleAddExcuse} />
-            <ul>
-                {excuses.map((excuse, index) => (
-                    <li key={index}>{excuse.excuse} - {excuse.reason}</li>
-                ))}
-            </ul>
+            <ExcuseList /> {/* Rendering the ExcuseList component to display excuses */}
+
         </div>
     );
 };
