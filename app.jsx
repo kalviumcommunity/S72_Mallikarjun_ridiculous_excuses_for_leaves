@@ -13,7 +13,7 @@ const ExcusesPage = () => {
 
     useEffect(() => {
         // Fetch initial list of excuses from the server
-        // fetch('/api/excuses')
+        // fetch('/api/excuses') .. . .
         //     .then(response => response.json())
         //     .then(data => setExcuses(data));
     }, []);
