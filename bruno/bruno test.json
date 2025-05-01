@@ -1,40 +1,21 @@
 {
-  "name": "Asap",
-  "version": "1",
-  "items": [
-    {
-      "type": "http",
-      "name": "asap",
-      "seq": 2,
-      "request": {
-        "url": "http://localhost:3000/ping",
-        "method": "GET",
-        "headers": [],
-        "params": [],
-        "body": {
-          "mode": "none",
-          "formUrlEncoded": [],
-          "multipartForm": []
-        },
-        "script": {},
-        "vars": {},
-        "assertions": [],
-        "tests": "",
-        "docs": "",
-        "auth": {
-          "mode": "none"
-        }
+  "request": {
+    "method": "POST",
+    "url": "http://localhost:3000/excuses",
+    "body": {
+      "mode": "json",
+      "raw": {
+        "reason": "My pet turtle ran away"
       }
-    }
-  ],
-  "environments": [],
-  "brunoConfig": {
-    "version": "1",
-    "name": "Asap",
-    "type": "collection",
-    "ignore": [
-      "node_modules",
-      ".git"
+    },
+    "headers": [
+      {
+        "name": "Content-Type",
+        "value": "application/json"
+      }
     ]
+  },
+  "meta": {
+    "name": "Create Excuse"
   }
 }
