@@ -20,4 +20,6 @@ const App = () => {
     );
 };
 
+app.use('/api/entities', require('./routes/entityRoutes'));
+
 export default App;
